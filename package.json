@@ -1,0 +1,23 @@
+{
+  "name": "cache-decorator",
+  "version": "1.0.0",
+  "description": "cache decorator",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/msn0/cache-decorator.git"
+  },
+  "keywords": [
+    "cache",
+    "decorator"
+  ],
+  "author": "Michał Jezierski <ambinanitelo@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/msn0/cache-decorator/issues"
+  },
+  "homepage": "https://github.com/msn0/cache-decorator#readme"
+}
