@@ -1,11 +1,25 @@
 import test from 'ava';
-import cache from './';
+import sinon from 'sinon';
+import { cache } from './';
 
-function foo(name) {
-    return `Hello ${name}!`;
+class FooBar {
+  
+    @cache({ time: 10 })
+    foo() {
+        return this.bar();
+    }
+    
+    bar() {
+        return Math.random();
+    }
 }
 
-test('should pass', t => {
-    cache(foo)('John');
-    t.pass();
+test('should call method only once', t => {
+    const foobar = new FooBar();
+    const spy = sinon.spy(foobar, 'bar');
+    
+    foobar.foo();
+    foobar.foo();
+    
+    t.truthy(spy.calledOnce);
 });
