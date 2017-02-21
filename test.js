@@ -3,12 +3,12 @@ import sinon from 'sinon';
 import { cache } from './';
 
 class FooBar {
-  
-    @cache({ time: 10 })
+
+    @cache({ key: 'test' })
     foo() {
         return this.bar();
     }
-    
+
     bar() {
         return Math.random();
     }
@@ -16,7 +16,7 @@ class FooBar {
 
 test('should call method only once', t => {
     const foobar = new FooBar();
-    const spy = sinon.spy(foobar, 'bar');
+    const spy = sinon.spy(FooBar.prototype, 'bar');
     
     foobar.foo();
     foobar.foo();
