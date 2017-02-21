@@ -13,6 +13,7 @@
   },
   "keywords": [
     "cache",
+    "cacheable",
     "decorator"
   ],
   "author": "Michał Jezierski <ambinanitelo@gmail.com>",
