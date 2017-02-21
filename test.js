@@ -27,11 +27,19 @@ test('should call annotated method only once', t => {
 
 test('the value for subsequent calls should match', t => {
     const foobar = new FooBar();
-    const spy = sinon.spy(FooBar.prototype, 'bar');
 
     const firstValue = foobar.foo();
     const secondValue = foobar.foo();
-    spy.restore();
 
     t.is(firstValue, secondValue);
+});
+
+test('value should not be shared across instances', t => {
+    const foobar1 = new FooBar();
+    const foobar2 = new FooBar();
+
+    const value1 = foobar1.foo();
+    const value2 = foobar2.foo();
+
+    t.falsy(value1 === value2);
 });
