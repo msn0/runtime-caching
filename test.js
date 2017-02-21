@@ -14,12 +14,24 @@ class FooBar {
     }
 }
 
-test('should call method only once', t => {
+test('should call annotated method only once', t => {
     const foobar = new FooBar();
     const spy = sinon.spy(FooBar.prototype, 'bar');
-    
+
     foobar.foo();
     foobar.foo();
-    
+    spy.restore();
+
     t.truthy(spy.calledOnce);
+});
+
+test('the value for subsequent calls should match', t => {
+    const foobar = new FooBar();
+    const spy = sinon.spy(FooBar.prototype, 'bar');
+
+    const firstValue = foobar.foo();
+    const secondValue = foobar.foo();
+    spy.restore();
+
+    t.is(firstValue, secondValue);
 });
