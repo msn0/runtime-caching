@@ -1,19 +1,19 @@
 const curry = require('dead-simple-curry');
 
-module.exports.cache = curry((config, target, key, descriptor) => {
+module.exports.cache = curry((config, context, key, descriptor) => {
 
     const fn = descriptor.value;
 
     descriptor.value = function () {
-        const key = config.key;
-        this.state = this.state || {};
+        this.___cache = this.___cache || {};
 
-        if (this.state.hasOwnProperty(key)) {
-            return this.state[key];
+        const index = `${key}___${JSON.stringify(arguments)}`;
+        if (this.___cache[index] !== undefined) {
+            return this.___cache[index];
         }
 
-        this.state[key] = fn.apply(target, arguments);
-        return this.state[key];
+        this.___cache[index] = fn.apply(context, arguments);
+        return this.___cache[index];
     };
 
     return descriptor;
