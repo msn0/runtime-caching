@@ -1,9 +1,10 @@
-# cache-decorator
+# @cache decorator
 
 ```js
 class Foo {
 
-  @cache
+  // cache response for 1000 milliseconds
+  @cache({ timeout: 1000 })
   request() {
     return 'the value to be cached';
   }
