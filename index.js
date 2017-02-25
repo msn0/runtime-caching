@@ -4,15 +4,17 @@ module.exports.cache = curry((config, target, key, descriptor) => {
 
     const fn = descriptor.value;
 
-    descriptor.state = {};
     descriptor.value = function () {
         const key = config.key;
-        const state = descriptor.state;
+        this.state = this.state || {};
 
-        if (state.hasOwnProperty(key)) {
-            return state[key];
+        if (this.state.hasOwnProperty(key)) {
+            return this.state[key];
         }
-        descriptor.state[key] = fn.apply(target, arguments);
+
+        this.state[key] = fn.apply(target, arguments);
+        return this.state[key];
     };
+
     return descriptor;
 });

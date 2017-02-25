@@ -35,11 +35,11 @@ test('the value for subsequent calls should match', t => {
 });
 
 test('value should not be shared across instances', t => {
-    const foobar1 = new FooBar();
-    const foobar2 = new FooBar();
+    const first = new FooBar();
+    const second = new FooBar();
 
-    const value1 = foobar1.foo();
-    const value2 = foobar2.foo();
+    const firstValue = first.foo();
+    const secondValue = second.foo();
 
-    t.falsy(value1 === value2);
+    t.truthy(firstValue, secondValue);
 });
