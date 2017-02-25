@@ -2,7 +2,7 @@ import { cache } from '../../';
 
 class FooBar {
 
-    @cache({ key: 'test' })
+    @cache({ key: 'testssss' })
     foo() {
         return this.bar();
     }

@@ -13,6 +13,8 @@ module.exports.cache = curry((config, context, key, descriptor) => {
         }
 
         this.___cache[index] = fn.apply(context, arguments);
+
+
         return this.___cache[index];
     };
 
