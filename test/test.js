@@ -1,18 +1,6 @@
 import test from 'ava';
 import sinon from 'sinon';
-import { cache } from './';
-
-class FooBar {
-
-    @cache({ key: 'test' })
-    foo() {
-        return this.bar();
-    }
-
-    bar() {
-        return Math.random();
-    }
-}
+import FooBar from './fixtures/foobar';
 
 test('should call annotated method only once', t => {
     const foobar = new FooBar();
