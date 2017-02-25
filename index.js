@@ -14,6 +14,8 @@ module.exports.cache = curry((config, context, key, descriptor) => {
 
         this.___cache[index] = fn.apply(context, arguments);
 
+        // schedule deletion
+        setTimeout(() => delete this.___cache[index], config.timeout);
 
         return this.___cache[index];
     };
