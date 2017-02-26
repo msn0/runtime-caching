@@ -15,7 +15,21 @@ module.exports.cache = curry((config, context, key, descriptor) => {
         }
 
         // cache response
-        this.___cache[index] = fn.apply(context, arguments);
+        const result = fn.apply(context, arguments);
+
+        if (result.constructor === Promise) {
+            return result.then(data => {
+                this.___cache[index] = new Promise(resolve => resolve(data));
+
+                // schedule deletion
+                setTimeout(() => delete this.___cache[index], config.timeout);
+
+                return Promise.resolve(data);
+            });
+        }
+
+        // persist cache entry
+        this.___cache[index] = result;
 
         // schedule deletion
         setTimeout(() => delete this.___cache[index], config.timeout);
