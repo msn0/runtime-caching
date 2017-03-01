@@ -8,6 +8,7 @@ class FooBar {
     }
 
     bar() {
+        console.log('bar called');
         return Math.random();
     }
 }

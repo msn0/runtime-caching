@@ -2,18 +2,18 @@ import test from 'ava';
 import sinon from 'sinon';
 import FooBar from './fixtures/foobar-promise';
 
-// test('should call annotated method only once', async t => {
-//     const foobar = new FooBar();
-//     const spy = sinon.spy(foobar, 'bar');
-//
-//     await foobar.foo('1');
-//     console.log(1, foobar.___cache);
-//     await foobar.foo('1');
-//     console.log(2, foobar.___cache);
-//     spy.restore();
-//
-//     t.truthy(spy.calledOnce);
-// });
+test('should call annotated method only once', async t => {
+    const foobar = new FooBar();
+    const spy = sinon.spy(foobar, 'bar');
+
+    await foobar.foo('1');
+    console.log(1, foobar.___cache);
+    await foobar.foo('1');
+    console.log(2, foobar.___cache);
+    spy.restore();
+
+    t.truthy(spy.calledOnce);
+});
 
 test('the value for subsequent calls should match', async t => {
     const foobar = new FooBar();
