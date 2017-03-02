@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { changePhrase, fetchBooks } from './actions';
+import Book from './book';
 
-const Suggester = ({ phrase, dispatch }) => {
+const Suggester = ({ phrase, books, dispatch }) => {
 
     function change(e) {
         dispatch(fetchBooks(e.target.value));
@@ -12,10 +13,15 @@ const Suggester = ({ phrase, dispatch }) => {
         <div>
             <input onChange={ change } />
             <div>Phrase: { phrase }</div>
+            {books.map(book =>
+                <Book book={ book } key={ book.id } />
+            )}
         </div>
     );
 };
 
-const mapStateToProps = ({ books, phrase }) => ({ books, phrase });
+const mapStateToProps = ({ books = [], phrase }) => {
+    return { books, phrase };
+};
 
 export default connect(mapStateToProps)(Suggester);
