@@ -2,21 +2,16 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { changePhrase } from './actions';
 
-const Suggester = (state) => {
+const Suggester = ({ phrase, dispatch }) => {
 
-    console.log('sss', state);
-
-    function change() {
-        console.log('change');
-        state.dispatch(changePhrase('test phrase'));
+    function change(e) {
+        dispatch(changePhrase(e.target.value));
     }
 
     return (
         <div>
-            <button onClick={ change }>
-                click me
-            </button>
-            <div>Phrase: { state.phrase }</div>
+            <input onChange={ change } value={ phrase } />
+            <div>Phrase: { phrase }</div>
         </div>
     );
 };
