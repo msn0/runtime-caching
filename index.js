@@ -4,7 +4,7 @@ function cacheFunction (context, config) {
     context = function () {
         context.prototype.___cache = context.prototype.___cache || {};
 
-        const index = `s___${JSON.stringify(arguments)}`;
+        const index = JSON.stringify(arguments);
 
         // return cache entry if any
         if (context.prototype.___cache[index] !== undefined) {

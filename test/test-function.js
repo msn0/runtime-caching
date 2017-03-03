@@ -2,6 +2,21 @@ import test from 'ava';
 import sinon from 'sinon';
 import { cache } from '../';
 
+test('should call cached function only once', t => {
+    const fakeObject = {
+        bar: function () {
+            return Math.random();
+        }
+    };
+    const spy = sinon.spy(fakeObject, 'bar');
+    const foo = cache({ timeout: 1000 })(fakeObject.bar);
+
+    foo();
+    foo();
+
+    t.truthy(spy.calledOnce);
+});
+
 test('the value for subsequent calls should match', t => {
     const foo = cache({ timeout: 1000 })(Math.random);
 
@@ -32,7 +47,7 @@ test('value should not be shared across instances', t => {
     t.not(first, second);
 });
 
-test('should call cached function only once', t => {
+test('should call twice when arguments differ', t => {
     const fakeObject = {
         bar: function () {
             return Math.random();
@@ -41,8 +56,8 @@ test('should call cached function only once', t => {
     const spy = sinon.spy(fakeObject, 'bar');
     const foo = cache({ timeout: 1000 })(fakeObject.bar);
 
-    foo();
-    foo();
+    foo('1');
+    foo('2');
 
-    t.truthy(spy.called);
+    t.truthy(spy.calledTwice);
 });
