@@ -1,6 +1,6 @@
 import test from 'ava';
 import sinon from 'sinon';
-import FooBar from './fixtures/foobar-promise';
+import FooBar from './fixtures/class-promise';
 
 // test('should call annotated method only once', async t => {
 //     const foobar = new FooBar();

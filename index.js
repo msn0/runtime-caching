@@ -14,6 +14,8 @@ function cacheFunction (context, config) {
         // cache response
         const result = fn.apply(context.prototype, arguments);
 
+        console.log(result);
+
         // if (result.constructor === Promise) {
         //     return result.then(data => {
         //         this.___cache[index] = new Promise(resolve => resolve(data));

@@ -1,6 +1,6 @@
 import test from 'ava';
 import sinon from 'sinon';
-import FooBar from './fixtures/foobar';
+import FooBar from './fixtures/class';
 
 test('should call annotated method only once', t => {
     const foobar = new FooBar();
