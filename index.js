@@ -14,18 +14,18 @@ function cacheFunction (context, config) {
         // cache response
         const result = fn.apply(context.prototype, arguments);
 
-        console.log(result);
+        // console.log(result.constructor);
 
-        // if (result.constructor === Promise) {
-        //     return result.then(data => {
-        //         this.___cache[index] = new Promise(resolve => resolve(data));
-        //
-        //         // schedule deletion
-        //         setTimeout(() => delete this.___cache[index], config.timeout);
-        //
-        //         return Promise.resolve(data);
-        //     });
-        // }
+        if (result.constructor === Promise) {
+            return result.then(data => {
+                context.prototype.___cache[index] = new Promise(resolve => resolve(data));
+
+                // schedule deletion
+                setTimeout(() => delete context.prototype.___cache[index], config.timeout);
+
+                return Promise.resolve(data);
+            });
+        }
 
         // persist cache entry
         context.prototype.___cache[index] = result;
