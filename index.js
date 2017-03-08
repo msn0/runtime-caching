@@ -1,4 +1,4 @@
-function cacheFunction (context, config) {
+function cacheFunction ({ context, config }) {
     const fn = context;
 
     context = function () {
@@ -13,8 +13,6 @@ function cacheFunction (context, config) {
 
         // cache response
         const result = fn.apply(context.prototype, arguments);
-
-        // console.log(result.constructor);
 
         if (result.constructor === Promise) {
             return result.then(data => {
@@ -39,49 +37,51 @@ function cacheFunction (context, config) {
     return context;
 }
 
-module.exports.cache = (config) => {
+function cacheClass({ context, key, descriptor, config }) {
+    const fn = descriptor.value;
 
-    return function (context, key, descriptor) {
+    descriptor.value = function () {
+        this.___cache = this.___cache || {};
 
-        if (typeof context === 'function') {
-            return cacheFunction(context, config);
+        const index = `${key}___${JSON.stringify(arguments)}`;
+
+        // return cache entry if any
+        if (this.___cache[index] !== undefined) {
+            return this.___cache[index];
         }
 
-        const fn = descriptor.value;
+        // cache response
+        const result = fn.apply(context, arguments);
 
-        descriptor.value = function () {
-            this.___cache = this.___cache || {};
+        if (result.constructor === Promise) {
+            return result.then(data => {
+                this.___cache[index] = new Promise(resolve => resolve(data));
 
-            const index = `${key}___${JSON.stringify(arguments)}`;
+                // schedule deletion
+                setTimeout(() => delete this.___cache[index], config.timeout);
 
-            // return cache entry if any
-            if (this.___cache[index] !== undefined) {
-                return this.___cache[index];
-            }
+                return Promise.resolve(data);
+            });
+        }
 
-            // cache response
-            const result = fn.apply(context, arguments);
+        // persist cache entry
+        this.___cache[index] = result;
 
-            if (result.constructor === Promise) {
-                return result.then(data => {
-                    this.___cache[index] = new Promise(resolve => resolve(data));
+        // schedule deletion
+        setTimeout(() => delete this.___cache[index], config.timeout);
 
-                    // schedule deletion
-                    setTimeout(() => delete this.___cache[index], config.timeout);
+        return this.___cache[index];
+    };
 
-                    return Promise.resolve(data);
-                });
-            }
+    return descriptor;
+}
 
-            // persist cache entry
-            this.___cache[index] = result;
-
-            // schedule deletion
-            setTimeout(() => delete this.___cache[index], config.timeout);
-
-            return this.___cache[index];
-        };
-
-        return descriptor;
+module.exports.cache = (config) => {
+    return function (context, key, descriptor) {
+        if (typeof context === 'function') {
+            return cacheFunction({ context, config });
+        } else if (descriptor && descriptor.value) {
+            return cacheClass({ context, key, descriptor, config });
+        }
     };
 };
