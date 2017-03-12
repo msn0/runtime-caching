@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changePhrase, fetchBooks } from './actions';
+import { fetchBooks } from './actions';
 import Book from './book';
 
 const Suggester = ({ phrase, books, dispatch }) => {
@@ -20,8 +20,6 @@ const Suggester = ({ phrase, books, dispatch }) => {
     );
 };
 
-const mapStateToProps = ({ books = [], phrase }) => {
-    return { books, phrase };
-};
+const mapStateToProps = ({ books = [], phrase }) => ({ books, phrase });
 
 export default connect(mapStateToProps)(Suggester);

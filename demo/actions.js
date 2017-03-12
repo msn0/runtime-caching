@@ -17,14 +17,20 @@ export const fetchBooksSuccess = (phrase, json) => ({
 });
 
 function getBooks(phrase) {
-    return fetch(`https://www.googleapis.com/books/v1/volumes?q=${phrase}`).then(response => response.json());
+    return fetch(`https://www.googleapis.com/books/v1/volumes?q=${phrase}`)
+      .then(response => response.json());
 }
 
 const getBooksCached = cache({ timeout: 60000 })(getBooks);
 
 export function fetchBooks(phrase) {
     return function (dispatch) {
+        if (phrase === '') {
+            dispatch(fetchBooksSuccess(phrase, { items: [] }));
+            return;
+        }
+
         dispatch(fetchBooksRequest(phrase));
-        return getBooksCached(phrase).then(json => dispatch(fetchBooksSuccess(phrase, json)));
+        getBooksCached(phrase).then(json => dispatch(fetchBooksSuccess(phrase, json)));
     };
 }
