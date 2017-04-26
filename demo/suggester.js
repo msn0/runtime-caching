@@ -9,13 +9,19 @@ const Suggester = ({ phrase, books, dispatch }) => {
         dispatch(fetchBooks(e.target.value));
     }
 
+    function renderBook(book) {
+        return <Book book={ book } key={ book.id } />;
+    }
+
     return (
-        <div>
-            <input onChange={ change } />
-            <div>Phrase: { phrase }</div>
-            {books.map(book =>
-                <Book book={ book } key={ book.id } />
-            )}
+        <div className='wrapper'>
+            <section className='suggester'>
+                <input onChange={ change } />
+                <div>Phrase: { phrase }</div>
+            </section>
+            <section className='results'>
+                { books.map(renderBook) }
+            </section>
         </div>
     );
 };

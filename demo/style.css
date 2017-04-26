@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}
+
+html, body, #root,.wrapper {
+  height: 100%;
+}
+
+.suggester {
+  height: 32.8%;
+  box-shadow: 0 1px 3px #999;
+  text-align: center;
+  font-weight: 300;
+  color: #222;
+  font-size: 28px;
+  background: #00c9ff;
+  background: -webkit-linear-gradient(to right, #00c9ff, #92fe9d);
+  background: linear-gradient(to right, #00c9ff, #92fe9d);
+}
