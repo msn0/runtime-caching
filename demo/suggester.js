@@ -16,8 +16,10 @@ const Suggester = ({ phrase, books, dispatch }) => {
     return (
         <div className='wrapper'>
             <section className='suggester'>
-                <input onChange={ change } />
-                <div>Phrase: { phrase }</div>
+                <header className='header'>
+                  <h1 className='header-slogan'>Discover Google Books</h1>
+                </header>
+                <input className='search' onChange={ change } placeholder='enter a phrase' />
             </section>
             <section className='results'>
                 { books.map(renderBook) }

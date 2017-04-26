@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
 
-body {
+body, body * {
   font-family: 'Lato', sans-serif;
-  margin: 0;
+  font-weight: 100;
 }
 
-html, body, #root,.wrapper {
+html, body, #root, .wrapper {
   height: 100%;
 }
 
@@ -16,7 +16,30 @@ html, body, #root,.wrapper {
   font-weight: 300;
   color: #222;
   font-size: 28px;
-  background: #00c9ff;
-  background: -webkit-linear-gradient(to right, #00c9ff, #92fe9d);
-  background: linear-gradient(to right, #00c9ff, #92fe9d);
+  background: #c0392b;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8e44ad, #c0392b);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8e44ad, #c0392b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.header {
+  position: relative;
+  height: 67.2%;
+}
+
+.header-slogan {
+  color: white;
+  bottom: 0;
+  position: absolute;
+  transform: translateY(-100%);
+  width: 100%;
+}
+
+.search{
+  width: 250px;
+  height: 35px;
+  border-radius: 4px;
+  border: 0;
+  padding: 4px 10px;
+  box-shadow: 0 2px 0px #8e44ad;
+  font-size: 17px;
 }
