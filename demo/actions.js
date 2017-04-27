@@ -1,19 +1,8 @@
 import { cache } from '../';
 
-export const changePhrase = (phrase) => ({
-    type: 'CHANGE_PHRASE',
-    phrase
-});
-
-export const fetchBooksRequest = (phrase) => ({
-    type: 'FETCH_BOOKS_REQUEST',
-    phrase
-});
-
-export const fetchBooksSuccess = (phrase, json) => ({
+export const fetchBooksSuccess = (books) => ({
     type: 'FETCH_BOOKS_SUCCESS',
-    json,
-    phrase
+    books
 });
 
 function getBooks(phrase) {
@@ -26,11 +15,11 @@ const getBooksCached = cache({ timeout: 60000 })(getBooks);
 export function fetchBooks(phrase) {
     return function (dispatch) {
         if (phrase === '') {
-            dispatch(fetchBooksSuccess(phrase, { items: [] }));
+            dispatch(fetchBooksSuccess([]));
             return;
         }
 
-        dispatch(fetchBooksRequest(phrase));
-        getBooksCached(phrase).then(json => dispatch(fetchBooksSuccess(phrase, json)));
+        getBooksCached(phrase)
+          .then(json => dispatch(fetchBooksSuccess(json.items)));
     };
 }

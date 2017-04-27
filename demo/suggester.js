@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchBooks } from './actions';
 import Book from './book';
 
-const Suggester = ({ phrase, books, dispatch }) => {
+const Suggester = ({ books, dispatch }) => {
 
     function change(e) {
         dispatch(fetchBooks(e.target.value));
@@ -28,6 +28,6 @@ const Suggester = ({ phrase, books, dispatch }) => {
     );
 };
 
-const mapStateToProps = ({ books = [], phrase }) => ({ books, phrase });
+const mapStateToProps = ({ books = [] }) => ({ books });
 
 export default connect(mapStateToProps)(Suggester);
