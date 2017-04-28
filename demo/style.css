@@ -44,3 +44,37 @@ html, body, #root, .wrapper {
   box-shadow: 0 2px 0px #8e44ad;
   font-size: 20px;
 }
+
+.book {
+    margin: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 16px -2px rgba(0,0,0,.1), 0 0 0 1px rgba(0,0,0,.02);
+    overflow: hidden;
+}
+
+.book-image {
+    float: left;
+}
+
+.book-image {
+    margin-right: 20px;
+}
+
+.book-title {
+    font-size: 28px;
+    line-height: 35px;
+}
+
+.book-details {
+    vertical-align: top;
+}
+
+.book-authors {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.results {
+    max-width: 1000px;
+    margin: 0 auto;
+}
