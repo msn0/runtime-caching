@@ -4,7 +4,8 @@ const style = {
     position: 'absolute',
     top: 0,
     right: 0,
-    border: 0
+    border: 0,
+    zIndex: 3
 };
 
 export default function () {
