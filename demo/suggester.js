@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchBooks } from './actions';
 import Book from './book';
+import ForkMeOnGithub from './fork-me-on-github';
 
 const Suggester = ({ books, dispatch }) => {
 
@@ -15,6 +16,7 @@ const Suggester = ({ books, dispatch }) => {
 
     return (
         <div className='wrapper'>
+            <ForkMeOnGithub />
             <section className='suggester'>
                 <header className='header'>
                   <h1 className='header-slogan'>Discover Google Books</h1>
