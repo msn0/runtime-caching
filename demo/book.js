@@ -2,6 +2,7 @@ import React from 'react';
 
 export default function (props) {
     const { title, authors, imageLinks } = props.book.volumeInfo;
+    const textSnippet = props.book.searchInfo && props.book.searchInfo.textSnippet;
     return (
         <article className='book'>
             { imageLinks && (
@@ -15,6 +16,9 @@ export default function (props) {
                     <div className='book-authors'>
                         Authors: { authors.join(', ') }
                     </div>
+                )}
+                { textSnippet && (
+                    <div className='book-description' dangerouslySetInnerHTML={{ __html: textSnippet }}></div>
                 )}
             </div>
         </article>
