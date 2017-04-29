@@ -53,3 +53,7 @@ class Foo {
   }
 }
 ```
+
+## License
+
+MIT © [Michał Jezierski](https://github.com/msn0)
