@@ -34,7 +34,7 @@ const a = computeCached('foo');
 // compute was already called with 'foo'. Just return cached value.
 const b = computeCached('foo');
 
-// compute was already called byt with different params. 
+// compute was already called but with different params. 
 // Execute compute('bar') and cache value under different key.
 const c = computeCached('bar'); // c !== a
 ```
