@@ -39,6 +39,10 @@ const b = computeCached('foo');
 const c = computeCached('bar'); // c !== a
 ```
 
+### cache class methods
+
+`cache-decorator` may be used as [javascript-decorator](https://github.com/wycats/javascript-decorators)
+
 ```js
 class Foo {
 
