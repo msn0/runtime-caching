@@ -1,3 +1,8 @@
 {
-    extends: 'helmut'
+    extends: 'helmut',
+    rules: {
+        'arrow-spacing': 'warn',
+        'keyword-spacing': 'warn',
+        'space-before-blocks': 'warn'
+    }
 }
