@@ -29,14 +29,14 @@ const computeCached = cache({ timeout: 30000 })(compute);
 
 // Nothing is cached at the moment.
 // Execute compute('foo') and cache the result
-const a = computeCached('foo');
+computeCached('foo');
 
 // compute was already called with 'foo'. Just return cached value.
-const b = computeCached('foo');
+computeCached('foo');
 
 // compute was already called but with different params. 
 // Execute compute('bar') and cache value under different key.
-const c = computeCached('bar'); // c !== a
+computeCached('bar');
 ```
 
 ### cache class methods
