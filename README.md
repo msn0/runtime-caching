@@ -1,10 +1,10 @@
-# @cache decorator
+# runtime-caching
 
 ## examples
 
 ### cache promise responses
 ```js
-import { cache } from 'cache-decorator';
+import { cache } from 'runtime-caching';
 
 function foo (name) {
    return fetch(`/foo?name=${name}`);
@@ -16,7 +16,7 @@ module.exports = cache({ timeout: 30000 })(foo);
 ### cache computationally and memory expensive algorithms
 
 ```js
-import { cache } from 'cache-decorator';
+import { cache } from 'runtime-caching';
 
 function compute(params) {
     // some heavy computations
@@ -41,9 +41,11 @@ computeCached('bar');
 
 ### cache class methods
 
-`cache-decorator` may be used as [javascript-decorator](https://github.com/wycats/javascript-decorators)
+`runtime-caching` may be used as [javascript-decorator](https://github.com/wycats/javascript-decorators)
 
 ```js
+import cache from 'runtime-caching';
+
 class Foo {
 
   // cache response for 1000 milliseconds
