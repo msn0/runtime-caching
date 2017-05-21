@@ -2,6 +2,21 @@
 
 https://msn0.github.io/runtime-caching
 
+runtime-caching is used for caching function responses. It might be useful when dealing with heavy algorithms, e.g.
+
+```js
+const cache = require('runtime-caching');
+
+const factorial = (n) => {
+    // compute and return n!
+};
+
+const factorialCached = cache(factorial);
+
+factorialCached(55); // 121645100408832000
+```
+
+
 ## examples
 
 ### cache promise responses
