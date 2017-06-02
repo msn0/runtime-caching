@@ -41,7 +41,7 @@ function compute(params) {
 }
 
 // computeCached will cache results for 30 seconds. 
-// Results obtained from different input params will be cached separately.
+// Results obtained from different input params are cached separately.
 const computeCached = cache({ timeout: 30000 })(compute);
 
 // Nothing is cached at the moment.
