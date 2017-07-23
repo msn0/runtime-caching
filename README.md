@@ -2,7 +2,7 @@
 
 https://msn0.github.io/runtime-caching
 
-runtime-caching is used for caching function responses. It might be useful when dealing with heavy algorithms, e.g.
+Runtime-caching is used for caching function responses. It is useful when dealing with heavy, time-consuming algorithms, e.g.
 
 ```js
 const cache = require('runtime-caching');
