@@ -2,10 +2,10 @@
 
 https://msn0.github.io/runtime-caching
 
-Runtime-caching is used for caching function responses. It is useful when dealing with heavy, time-consuming algorithms, e.g.
+Runtime-caching is used for caching function responses. It is useful when dealing with heavy, time-consuming algorithms. In the following example factorial is computed only once and cached in memory for the next 30 seconds:
 
 ```js
-const cache = require('runtime-caching');
+const cache = require('runtime-caching')({ timeout: 30000 });
 
 const factorial = (n) => {
     // compute and return n!
