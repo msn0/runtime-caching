@@ -15,12 +15,12 @@ const Suggester = ({ books, dispatch }) => {
             <ForkMeOnGithub />
             <section className='suggester'>
                 <header className='header'>
-                  <h1 className='header-slogan'>Discover Google Books</h1>
+                    <h1 className='header-slogan'>Discover Google Books</h1>
                 </header>
                 <input className='search' onChange={ change } placeholder='enter a phrase' />
             </section>
             <section className='results'>
-                { books.map(book => <Book book={ book } key={ book.id } /> }
+                { books.map(book => <Book book={ book } key={ book.id } />) }
             </section>
         </div>
     );
