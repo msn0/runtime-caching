@@ -10,10 +10,6 @@ const Suggester = ({ books, dispatch }) => {
         dispatch(fetchBooks(e.target.value));
     }
 
-    function renderBook(book) {
-        return <Book book={ book } key={ book.id } />;
-    }
-
     return (
         <div className='wrapper'>
             <ForkMeOnGithub />
@@ -24,7 +20,7 @@ const Suggester = ({ books, dispatch }) => {
                 <input className='search' onChange={ change } placeholder='enter a phrase' />
             </section>
             <section className='results'>
-                { books.map(renderBook) }
+                { books.map(book => <Book book={ book } key={ book.id } /> }
             </section>
         </div>
     );
