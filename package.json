@@ -1,7 +1,7 @@
 {
-  "name": "cache-decorator",
+  "name": "runtime-caching",
   "version": "1.0.0",
-  "description": "cache decorator",
+  "description": "runtime caching",
   "main": "index.js",
   "scripts": {
     "test": "ava --verbose --serial",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/msn0/cache-decorator.git"
+    "url": "git+https://github.com/msn0/runtime-caching.git"
   },
   "keywords": [
     "cache",
@@ -21,9 +21,9 @@
   "author": "Michał Jezierski <ambinanitelo@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/msn0/cache-decorator/issues"
+    "url": "https://github.com/msn0/runtime-caching/issues"
   },
-  "homepage": "https://github.com/msn0/cache-decorator#readme",
+  "homepage": "https://github.com/msn0/runtime-caching#readme",
   "devDependencies": {
     "ava": "^0.22.0",
     "babel-cli": "^6.26.0",
