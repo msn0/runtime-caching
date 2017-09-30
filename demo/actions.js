@@ -7,7 +7,7 @@ export const fetchBooksSuccess = (books) => ({
 
 function getBooks(phrase) {
     return fetch(`https://www.googleapis.com/books/v1/volumes?q=${phrase}`)
-      .then(response => response.json());
+        .then(response => response.json());
 }
 
 const getBooksCached = cache({ timeout: 60000 })(getBooks);
@@ -20,6 +20,6 @@ export function fetchBooks(phrase) {
         }
 
         getBooksCached(phrase)
-          .then(json => dispatch(fetchBooksSuccess(json.items)));
+            .then(json => dispatch(fetchBooksSuccess(json.items)));
     };
 }
