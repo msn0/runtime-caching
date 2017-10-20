@@ -2,7 +2,7 @@
   "name": "runtime-caching",
   "version": "1.0.0",
   "description": "runtime caching",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "ava --verbose --serial",
     "lint": "eslint . --fix",
@@ -32,18 +32,19 @@
     "babel-preset-latest": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "eslint": "^4.8.0",
-    "eslint-config-helmut": "^1.2.0",
+    "eslint-config-helmut": "^2.2.0",
+    "eslint-plugin-react": "^7.4.0",
     "sinon": "^4.0.0",
     "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1"
-  },
-  "dependencies": {
-    "dead-simple-curry": "^1.1.1",
+    "webpack-dev-server": "^2.9.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
+  },
+  "dependencies": {
+    "dead-simple-curry": "^1.1.1"
   },
   "ava": {
     "concurrency": 5,

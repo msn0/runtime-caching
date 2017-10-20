@@ -81,7 +81,6 @@ test('should remove cached value after given time', t => {
     t.is(foobar.___cache['foo___{}'], undefined);
 });
 
-
 test('should remove cached value after given time (with arguments)', t => {
     const foobar = new FooBar();
     const clock = sinon.useFakeTimers();
