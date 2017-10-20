@@ -1,4 +1,4 @@
-# runtime-caching
+# runtime-caching [![Build Status](https://travis-ci.org/msn0/runtime-caching.svg?branch=master)](http://travis-ci.org/msn0/runtime-caching)
 
 demo: [https://msn0.github.io/runtime-caching](https://msn0.github.io/runtime-caching)
 
@@ -16,6 +16,11 @@ const factorialCached = cache(factorial);
 factorialCached(55); // 121645100408832000
 ```
 
+## installation
+
+```sh
+$ npm i runtime-caching
+```
 
 ## examples
 
@@ -40,7 +45,7 @@ function compute(params) {
     return result;
 }
 
-// computeCached will cache results for 30 seconds. 
+// computeCached will cache results for 30 seconds.
 // Results obtained from different input params are cached separately.
 const computeCached = cache({ timeout: 30000 })(compute);
 
@@ -51,7 +56,7 @@ computeCached('foo');
 // compute was already called with 'foo'. Just return cached value.
 computeCached('foo');
 
-// compute was already called but with different params. 
+// compute was already called but with different params.
 // Execute compute('bar') and cache value under different key.
 computeCached('bar');
 ```

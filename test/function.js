@@ -4,7 +4,7 @@ import { cache } from '../';
 
 test('should call cached function only once', t => {
     const fakeObject = {
-        bar: function () {
+        bar () {
             return Math.random();
         }
     };
@@ -49,7 +49,7 @@ test('value should not be shared across instances', t => {
 
 test('should call twice when arguments differ', t => {
     const fakeObject = {
-        bar: function () {
+        bar () {
             return Math.random();
         }
     };
