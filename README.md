@@ -5,13 +5,13 @@ demo: [https://msn0.github.io/runtime-caching](https://msn0.github.io/runtime-ca
 Runtime-caching is used for caching function responses. It is useful when dealing with heavy, time-consuming algorithms. In the following example factorial is computed only once and cached in memory for the next 30 seconds:
 
 ```js
-const { cache } = require('runtime-caching')({ timeout: 30000 });
+const { cache } = require('runtime-caching');
 
 const factorial = (n) => {
     // compute and return n!
 };
 
-const factorialCached = cache(factorial);
+const factorialCached = cache({ timeout: 30000 })(factorial);
 
 factorialCached(55); // 121645100408832000
 ```
